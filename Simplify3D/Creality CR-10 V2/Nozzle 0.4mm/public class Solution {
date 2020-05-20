@@ -1,0 +1,64 @@
+public class Solution {
+    
+      private int _row;
+        private int _column;
+        private int[,] _matrix;
+        private bool[,] _visited;
+    
+    
+    public int NumIslands(char[][] grid) {
+            
+        
+            _row = grid.Length;
+            _column = grid[0].Length;
+        
+             
+            _matrix = new int[row, column];
+        
+           
+        
+            _visited = new bool[row, column];
+
+            var counter = 0;
+            for (var y = 0; y < row; y++)
+            {
+                for (var x = 0; x < column; x++)
+                {
+                    _matrix[y,x] = int.Parse(grid[y][x]);
+                    if (_visited[y, x]) continue;
+                    var value = matrix[y, x];
+                    if (value == 0) continue;
+                    CheckAdjacent(y, x);
+                    counter++;
+                }
+            }
+
+            return counter;
+    }
+    
+      private bool WithinBound(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < _column && y < _row;
+        }
+
+        private void CheckAdjacent(int y, int x)
+        {
+            _visited[y, x] = true;
+
+            var adjacentR = new[] {-1, 1, 0, 0};
+            var adjacentC = new[] {0, 0, -1, 1};
+
+            for (var a = 0; a < 4; a++)
+            {
+                var newX = x + adjacentC[a];
+                var newY = y + adjacentR[a];
+                if (WithinBound(newX, newY) == false) continue;
+                if (_visited[newY, newX]) continue;
+                
+                _visited[newY, newX] = true;
+                var value = _matrix[newY, newX];
+                if (value == 1)
+                    CheckAdjacent(newY, newX);
+            }
+        }
+}
