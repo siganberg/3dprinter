@@ -25,3 +25,5 @@ This is important. If you don't do this after flashing, your printer won't have 
 - Since my preference of leveling is on-demand, you need to adjust your startup GCODE for all of your print. I replaced the `G29` with this GCode on my startup script `M420 S1 Z5; restore mesh offset from last auto-level`
 - You don't need to do this if your preference is to run the bed leveling on every prints. Keep the `G29` on your startup script of everyprint. 
 
+## GCode Useful command
+G1 F60 Z0 - Move Z axis on the speed of 60 (slow)
