@@ -1,0 +1,11 @@
+M211 S0 - turn off soft end stop
+M211 S1 - turn ON soft end stop
+
+G28 - Home
+x
+G29 - LEvel
+
+Read the current offset
+M851
+
+-0.9
